@@ -1,0 +1,102 @@
+<scene version="3.0.0">
+  <integrator type="path"/>
+  <bsdf type="project-radio-material-v1" id="mat-perimeter_reflector">
+    <integer name="mode" value="1"/>
+    <float name="rho" value="0.7"/>
+    <float name="alpha_db_per_m" value="0.0"/>
+    <float name="thickness" value="0.1"/>
+    <rgb name="color" value="0.3600 0.3900 0.4400"/>
+  </bsdf>
+  <bsdf type="project-radio-material-v1" id="mat-concrete_0p300">
+    <integer name="mode" value="0"/>
+    <float name="rho" value="0.0"/>
+    <float name="alpha_db_per_m" value="50.0"/>
+    <float name="thickness" value="0.3"/>
+    <rgb name="color" value="0.5500 0.5500 0.5500"/>
+  </bsdf>
+  <bsdf type="project-radio-material-v1" id="mat-concrete_0p600">
+    <integer name="mode" value="0"/>
+    <float name="rho" value="0.0"/>
+    <float name="alpha_db_per_m" value="50.0"/>
+    <float name="thickness" value="0.6"/>
+    <rgb name="color" value="0.5500 0.5500 0.5500"/>
+  </bsdf>
+  <bsdf type="project-radio-material-v1" id="mat-concrete_0p800">
+    <integer name="mode" value="0"/>
+    <float name="rho" value="0.0"/>
+    <float name="alpha_db_per_m" value="50.0"/>
+    <float name="thickness" value="0.8"/>
+    <rgb name="color" value="0.5500 0.5500 0.5500"/>
+  </bsdf>
+  <bsdf type="project-radio-material-v1" id="mat-wood_0p600">
+    <integer name="mode" value="0"/>
+    <float name="rho" value="0.0"/>
+    <float name="alpha_db_per_m" value="8.0"/>
+    <float name="thickness" value="0.6"/>
+    <rgb name="color" value="0.7800 0.5700 0.2400"/>
+  </bsdf>
+  <shape type="ply" id="mesh-ROOM_Wall_West">
+    <string name="filename" value="meshes/ROOM_Wall_West.ply"/>
+    <ref name="bsdf" id="mat-perimeter_reflector"/>
+  </shape>
+  <shape type="ply" id="mesh-ROOM_Wall_East">
+    <string name="filename" value="meshes/ROOM_Wall_East.ply"/>
+    <ref name="bsdf" id="mat-perimeter_reflector"/>
+  </shape>
+  <shape type="ply" id="mesh-ROOM_Wall_South">
+    <string name="filename" value="meshes/ROOM_Wall_South.ply"/>
+    <ref name="bsdf" id="mat-perimeter_reflector"/>
+  </shape>
+  <shape type="ply" id="mesh-ROOM_Wall_North">
+    <string name="filename" value="meshes/ROOM_Wall_North.ply"/>
+    <ref name="bsdf" id="mat-perimeter_reflector"/>
+  </shape>
+  <shape type="ply" id="mesh-Wall_S">
+    <string name="filename" value="meshes/Wall_S.ply"/>
+    <ref name="bsdf" id="mat-concrete_0p300"/>
+  </shape>
+  <shape type="ply" id="mesh-Wall_N">
+    <string name="filename" value="meshes/Wall_N.ply"/>
+    <ref name="bsdf" id="mat-concrete_0p300"/>
+  </shape>
+  <shape type="ply" id="mesh-Pillar_BS">
+    <string name="filename" value="meshes/Pillar_BS.ply"/>
+    <ref name="bsdf" id="mat-concrete_0p600"/>
+  </shape>
+  <shape type="ply" id="mesh-Pillar_SW">
+    <string name="filename" value="meshes/Pillar_SW.ply"/>
+    <ref name="bsdf" id="mat-concrete_0p600"/>
+  </shape>
+  <shape type="ply" id="mesh-Pillar_NW">
+    <string name="filename" value="meshes/Pillar_NW.ply"/>
+    <ref name="bsdf" id="mat-concrete_0p600"/>
+  </shape>
+  <shape type="ply" id="mesh-Pillar_SE">
+    <string name="filename" value="meshes/Pillar_SE.ply"/>
+    <ref name="bsdf" id="mat-concrete_0p600"/>
+  </shape>
+  <shape type="ply" id="mesh-Pillar_NE">
+    <string name="filename" value="meshes/Pillar_NE.ply"/>
+    <ref name="bsdf" id="mat-concrete_0p600"/>
+  </shape>
+  <shape type="ply" id="mesh-Pillar_E">
+    <string name="filename" value="meshes/Pillar_E.ply"/>
+    <ref name="bsdf" id="mat-concrete_0p800"/>
+  </shape>
+  <shape type="ply" id="mesh-Cab_S1">
+    <string name="filename" value="meshes/Cab_S1.ply"/>
+    <ref name="bsdf" id="mat-wood_0p600"/>
+  </shape>
+  <shape type="ply" id="mesh-Cab_N1">
+    <string name="filename" value="meshes/Cab_N1.ply"/>
+    <ref name="bsdf" id="mat-wood_0p600"/>
+  </shape>
+  <shape type="ply" id="mesh-Cab_S2">
+    <string name="filename" value="meshes/Cab_S2.ply"/>
+    <ref name="bsdf" id="mat-wood_0p600"/>
+  </shape>
+  <shape type="ply" id="mesh-Cab_N2">
+    <string name="filename" value="meshes/Cab_N2.ply"/>
+    <ref name="bsdf" id="mat-wood_0p600"/>
+  </shape>
+</scene>
