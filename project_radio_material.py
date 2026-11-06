@@ -12,7 +12,7 @@ from sionna.rt.utils import (
 )
 
 
-# XML에 기록할 고정된 재질 plugin 이름
+# Fixed material plugin name declared in the XML
 PLUGIN_NAME = "project-radio-material-v1"
 
 class ProjectRadioMaterial(RadioMaterialBase):
@@ -101,7 +101,7 @@ class ProjectRadioMaterial(RadioMaterialBase):
             si.sh_frame.n,
         ).T
 
-        # 필요한 경우에만 Jones matrix 계산
+        # Compute the Jones matrix only when needed
         compute_jones = (
             ctx.component & NO_JONES_MATRIX
         ) == 0
@@ -117,8 +117,8 @@ class ProjectRadioMaterial(RadioMaterialBase):
         else:
             jones = mi.Spectrum(0.0)
 
-        # Sionna가 si.dp_du.z에 저장한
-        # 활성화된 interaction 정보를 읽음
+        # Read the active interaction information stored by Sionna
+        # in si.dp_du.z.
         enabled_interactions = dr.reinterpret_array(
             mi.UInt,
             si.dp_du.z,
@@ -177,14 +177,14 @@ class ProjectRadioMaterial(RadioMaterialBase):
             amp,
         )
 
-        # wo는 WORLD frame으로 전달되므로 local로 변환해야 함
+        # Convert wo to local coordinates because it is passed in the WORLD frame.
         wo_local = si.to_local(wo)
         direction_ok = isclose(
             dr.dot(ko_local, wo_local),
             mi.Float(1.0),
         )
 
-        # 선택된 interaction type은 si.dp_du.z에 저장됨 (si.prim_index 아님)
+        # The selected interaction type is stored in si.dp_du.z (not si.prim_index).
         sampled_event = dr.reinterpret_array(
             mi.UInt,
             si.dp_du.z,
@@ -208,7 +208,7 @@ class ProjectRadioMaterial(RadioMaterialBase):
             ki_local
         )
 
-        # wo는 WORLD frame으로 전달되므로 local로 변환해야 함
+        # Convert wo to local coordinates because it is passed in the WORLD frame.
         wo_local = si.to_local(wo)
         direction_ok = isclose(
             dr.dot(ko_local, wo_local),

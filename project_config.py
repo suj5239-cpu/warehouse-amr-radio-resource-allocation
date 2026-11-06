@@ -6,7 +6,7 @@ from pathlib import Path
 # File paths
 # =========================================================
 
-# project_config.py가 저장된 프로젝트 루트
+# Project root containing project_config.py
 PROJECT_DIR = Path(__file__).resolve().parent
 
 # Generated geometry and radio-scene definition
@@ -32,7 +32,7 @@ ROOM_X = 18.0
 ROOM_Y = 10.0
 ROOM_Z = 3.0
 
-BS_CENTER = np.array([3.0, 5.0, 2.7], dtype=float)   # antenna 위치와 동일
+BS_CENTER = np.array([3.0, 5.0, 2.7], dtype=float)   # Same as the antenna position
 
 RX_HEIGHT = 0.5
 
@@ -45,12 +45,14 @@ FREQ_HZ = 5.8e9
 BW_HZ = 20e6
 
 N_SC = 64
-DF_HZ = BW_HZ / N_SC
+DF_HZ = BW_HZ / N_SC  # Bandwidth per subcarrier (312,500 Hz)
 
 NF_DB = 7.0
+# Reference transmit power per subcarrier, used for the SNR fingerprint.
+# All N_SC active: total power = P_REF_DBM + 10*log10(N_SC) ≈ 13.06 dBm.
 P_REF_DBM = -5.0
 
-# 한 subcarrier가 차지하는 대역폭에 대한 잡음 전력
+# Noise power over the bandwidth of one subcarrier
 NOISE_SC_DBM = (
     -174.0
     + 10.0 * np.log10(DF_HZ)
@@ -71,7 +73,7 @@ GRID_RES = 0.5
 N_COLS = int(round(ROOM_X / GRID_RES))   # 36
 N_ROWS = int(round(ROOM_Y / GRID_RES))   # 20
 
-# 각 grid cell의 경계가 아니라 중심 좌표
+# Grid-cell centers rather than boundaries
 CELL_X = (np.arange(N_COLS) + 0.5) * GRID_RES
 CELL_Y = (np.arange(N_ROWS) + 0.5) * GRID_RES
 
@@ -111,6 +113,7 @@ AMR2_LINK_OFFSET_DB = -7.0
 # Materials and Obstacles
 # =========================================================
 
+# Radio interaction modes and attenuation; geometry is built in scene.ipynb.
 MATERIALS = {
     "perimeter": dict(mode="reflect", alpha_db_per_m=0.0,  rho=0.70,
                       color=(0.36, 0.39, 0.44)),
@@ -120,6 +123,10 @@ MATERIALS = {
                       color=(0.78, 0.57, 0.24)),
 }
 
+# Full obstacle dimensions define navigation footprints and visualizations.
+# Ray tracing instead uses one zero-thickness vertical plane per obstacle,
+# with effective thickness carried by the custom material for penetration loss.
+# Pillar/cabinet planes face the BS; interior walls use explicit proxy_normal.
 OBSTACLES = [
     dict(name="Wall_S", kind="box", center=(9.0, 2.5),
          size=(0.3, 5.0, 2.7), material="concrete", proxy_normal=(1.0, 0.0)),
