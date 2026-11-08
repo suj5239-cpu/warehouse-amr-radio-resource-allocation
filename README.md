@@ -51,8 +51,6 @@ The repository includes:
 | QoS target | 30 Mbps for each AMR at every evaluated time |
 | Link asymmetry | AMR 2 has a configured −7 dB SNR offset |
 
-See [model details](docs/model.md) for propagation, power, material, and planning assumptions. The [experiment notes](docs/experiments.md) explain the comparisons, Pareto analysis, and fading replay.
-
 ## Scope and Limitations
 
 - Route selection is restricted to the 900 candidate pairs; it does not establish a global optimum over all possible routes.
@@ -72,6 +70,6 @@ jupyter lab
 - **Analyze the included results:** run notebooks **03 → 04 → 05** using the saved NPZ files.
 - **Regenerate the full experiment:** run **scene → 01 → 02 → 03 → 04 → 05**. A CUDA-enabled Mitsuba environment is recommended for ray-tracing runtime.
 
-The [execution guide](docs/experiments.md#execution-order) lists the notebooks and outputs. Regenerate the upstream results after changing geometry, materials, or radio settings; rerunning notebooks can overwrite generated files.
+Regenerate the upstream results after changing geometry, materials, or radio settings; rerunning notebooks can overwrite generated files.
 
 **Explore:** [Figures](results/figures/) · [Animations](results/animations/) · [Configuration](project_config.py) · [Allocation functions](simulator.py)
