@@ -32,7 +32,7 @@ The repository includes:
 - A warehouse radio scene and a grid-based, per-subcarrier channel fingerprint generated with Sionna RT.
 - Candidate A* routes for two AMRs, synchronized trajectories, and SNR interpolation along each route.
 - Equal and optimized contiguous subcarrier allocation, followed by QoS-constrained route-pair selection.
-- Strategy comparisons, Pareto and QoS sensitivity analysis, trajectory animations, and a separate fading replay.
+- Strategy comparisons, Pareto and QoS sensitivity analysis, and trajectory animations.
 
 ## Method
 
@@ -54,7 +54,7 @@ The repository includes:
 ## Scope and Limitations
 
 - Route selection is restricted to the 900 candidate pairs; it does not establish a global optimum over all possible routes.
-- QoS satisfaction applies to sampled times in the static-channel model. The separate fading replay examines robustness with fixed routes and allocations.
+- QoS satisfaction applies only to sampled times in the static-channel model.
 - The rate model uses SISO links, fixed power per active subcarrier, and simplified propagation. Interference and protocol overhead are omitted.
 - Navigation uses a discrete occupancy grid. AMR-to-AMR collision avoidance and continuous robot-footprint clearance are outside the model.
 
